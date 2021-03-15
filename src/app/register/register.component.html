@@ -1,0 +1,63 @@
+<h2 style="color:red;">Youtube </h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div style="background-image: url('https://picsum.photos/id/1000/1500/2000');">
+<div class="container">
+    <h2> User Register</h2>
+    <form #registerform="ngForm" (ngSubmit)="registerUser()">
+        <small class="text-danger">{{msg}}</small>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control"  placeholder="Enter email" name="email" [(ngModel)]="user.emailid" required 
+         #email="ngModel"
+        [class.is-invalid]="email.invalid && email.touched">
+        
+        <!--<small class="text-danger" [class.d.none]="email.valid || email.untouched">Emaiid is required</small>-->
+       <div *ngIf="email.errors && (email.invalid && email.touched)">
+           <small class="text-danger" *ngIf="email.errors.required" >email id is required field</small>
+          
+       </div>
+      </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="username" class="form-control"  placeholder="Enter username" name="username" [(ngModel)]="user.username" required 
+         #username=ngModel
+        [class.is-invalid]="username.invalid && username.touched">
+        <br>
+        <!--<small class="text-danger" [class.d.none]="email.valid || email.untouched">Emaiid is required</small>-->
+       <div *ngIf="username.errors && (username.invalid&&username.touched)">
+           <small class="text-danger" *ngIf="username.errors.required" >username is required field</small>
+          
+       </div>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control"  placeholder="Enter password" name="password" [(ngModel)]="user.password" required  
+        #password=ngModel
+        [class.is-invalid]="password.invalid && password.touched">
+        <br>
+        <!--<small class="text-danger" [class.d.none]="email.valid || email.untouched">Emaiid is required</small>-->
+       <div *ngIf="password.errors && (password.invalid&&password.touched)">
+           <small class="text-danger" *ngIf="password.errors.required" >password is required field</small>
+         </div>
+         <div class="form-group">
+            <label for="pwd">conformPassword:</label>
+            <input type="conformpassword" class="form-control"  placeholder="Enter cpassword" name="conformpassword" (ngModel)="user.conformpassword" required  
+            #conformpassword=ngModel
+            [class.is-invalid]="conformpassword.invalid && conformpassword.touched">
+            <br>
+            <small class="text-danger" [class.d.none]="(conformpassword.value==password.value) || conformpassword.untouched"></small>password and cpassword should be same
+          <!----<div *ngIf="conformpassword.errors && (conformpassword.invalid&&conformpassword.touched)">
+               <small class="text-danger" *ngIf="conformpassword.errors.required" >conformpassword is required field</small>
+             </div>-->
+      <div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+      </div>
+       <button [disabled]="registerform.form.invalid" type="submit" class="btn btn-info">register</button>
+       <button>
+       <small class="float-right" [routerLink]="['/']">Existing user ?login here</small>
+       </button>
+
+    
+</div>
+</div>
+  

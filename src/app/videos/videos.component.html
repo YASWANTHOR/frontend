@@ -1,0 +1,16 @@
+<div>
+     
+
+ 
+ 
+   </div>
+    <input routerLink="/video-create" type="button" value="Create" style="float: right;">
+    
+    
+    <div class="row">
+    
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let video of dataListing">
+            <app-videocard [videoData]="video"></app-videocard>
+        </div>
+        
+      </div>

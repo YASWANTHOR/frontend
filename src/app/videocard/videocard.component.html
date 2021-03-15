@@ -1,0 +1,16 @@
+<div class="card h-100">
+        
+    <img [src]="videoData.videoImage">
+    <div class="card-body">
+      <h4>title:{{videoData.videoName}}</h4>
+    <p>logo: <img [src]="videoData.channelLogo">  {{videoData.channelName}}</p>
+     
+      <p class="card-text">views:{{videoData.views}}   .{{videoData.uploadInfo}}ago</p>
+    </div>
+    <div class="btn-group">
+      <button type = "button" class="btn btn-info" [routerLink]="['/video',videoData.id]">View</button>
+        <button type = "button" class="btn btn-primary" [routerLink]="['/video/edit',videoData.id]">Edit</button>
+        <button class="btn btn-danger" (click) = "deleteVideo(videoData.id)">Delete</button>
+    </div>
+    
+  </div>
